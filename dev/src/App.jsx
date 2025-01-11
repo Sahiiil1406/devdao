@@ -22,14 +22,20 @@ export default function App() {
 
 			{/* <Navbar /> */}
 			{/* <Suspense fallback={<Loader />}> */}
+			<div className="bg-black overflow-y-hidden w-full max-h-screen h-screen">
 			<UserProvider>
 				<Routes>
 				<Route path="/sand" element={<Sand />} />
 				<Route path="/auth" element={<Auth />} />
 				<Route path="/test" element={<Test />} />
+				<Route path="/problem" element={<ProblemLayout />}>
+						<Route path="test" element={<Test />} />
+						<Route path="css" element={<CssChallenges />} />
+					</Route>
 		
 			</Routes>
 			</UserProvider>
+			</
 			{/* </Suspense> */}
 		</>
 	);
