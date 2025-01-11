@@ -18,6 +18,11 @@ const questionSchema = new mongoose.Schema({
     gitUrl:{
         type:String
     },
+    category:{
+        type:String,
+        enum:['System Design','Algorithms','Devops','Frontend','Backend','Database','Others'],
+        default:'Frontend'
+    },
 })
 
 const Question = mongoose.model('Question', questionSchema);
