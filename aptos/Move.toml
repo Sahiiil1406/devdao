@@ -1,0 +1,31 @@
+[package]
+# Name of your Move package/project
+name = "DevDao"
+
+# Version of your package
+version = "0.1.0"
+
+# License for your package (optional)
+license = "UNLICENSED"
+
+# Authors of the package
+authors = ["Your Name <your.email@example.com>"]
+
+[addresses]
+# Define named addresses used in the package
+# Replace `0xDevDao` with your desired address placeholder
+DevDao = "0xDevDao"
+
+# Optionally, add other named addresses
+# Example:
+# Framework = "0x1"
+
+[dependencies]
+# List of dependencies, if any, with their names and paths/URLs
+# Example of local dependency:
+# MoveStdlib = { local = "../move-stdlib" }
+
+[build]
+# Optional: Specify build options for the package
+# Use the default named address for the build
+named_addresses = { DevDao = "0x1" }

@@ -4,7 +4,7 @@ export const pinata = new PinataSDK({
   pinataJwt: `${import.meta.env.VITE_PINATA_JWT}`,
   pinataGateway: `${import.meta.env.VITE_GATEWAY_URL}`
 })
-const handleSubmission = async (content) => {
+export const handleSubmission = async (content) => {
     try {
       const blob = new Blob([content], { type: 'text/plain' });
   
@@ -21,11 +21,7 @@ const handleSubmission = async (content) => {
       console.log(error);
     }
   };
-const cidToGatewayUrl = (cid) => `${import.meta.env.VITE_GATEWAY_URL}/ipfs/${cid}`
-  
-  module.exports = {
-    handleSubmission,
-    cidToGatewayUrl
-  }
+export const cidToGatewayUrl = (cid) => `${import.meta.env.VITE_GATEWAY_URL}/ipfs/${cid}`
+
 
 

@@ -1,8 +1,9 @@
 import axios from 'axios';
-const URL='http://localhost:3000/api';
+const URL='http://localhost:5000/api';
+import {handleSubmission} from '@/lib/pinata.js'
 
 
-const getAllQuestions = async () => {
+export const getAllQuestions = async () => {
     try {
         const response = await axios.get(`${URL}/allquestions`);
         return response.data;
@@ -11,7 +12,7 @@ const getAllQuestions = async () => {
     }
 };
 
-const getQuestion = async (id) => {
+export const getQuestion = async (id) => {
     try {
         const response = await axios.get(`${URL}/question/${id}`);
         return response.data;
@@ -20,16 +21,18 @@ const getQuestion = async (id) => {
     }
 };
 
-const submitCode = async (id, code,user) => {
+export const submitCode = async (id, code,user) => {
     try {
         const response = await axios.post(`${URL}/submit/${id}`, { code,user });
+        const upload=await handleSubmission(code);
+        console.log(upload);
         return response.data;
     } catch (error) {
         console.log('Error while calling submitCode API ', error);
     }
 }
 
-const checkDockerFile = async (id, code,user) => {
+export const checkDockerFile = async (id, code,user) => {
     try {
         const response = await axios.post(`${URL}/docker/${id}`, { code,user });
         return response.data;
@@ -38,7 +41,7 @@ const checkDockerFile = async (id, code,user) => {
     }
 }
 
-const createQuestion = async (title,description,rating,gitUrl,category) => {
+export const createQuestion = async (title,description,rating,gitUrl,category) => {
     try {
         const response = await axios.post(`${URL}/questions`, {
             title,
@@ -51,12 +54,4 @@ const createQuestion = async (title,description,rating,gitUrl,category) => {
     } catch (error) {
         console.log('Error while calling createQuestion API ', error);
     }
-}
-
-module.exports = {
-    getAllQuestions,
-    getQuestion,
-    submitCode,
-    checkDockerFile,
-    createQuestion
 }
