@@ -1,13 +1,26 @@
 import React from "react";
+import { useParams } from "react-router-dom";
 import {
 	ResizableHandle,
 	ResizablePanel,
 	ResizablePanelGroup,
 } from "@/components/ui/resizable";
-
+import { submitProblem, submitQuestion } from "@/api/contract";
+import { submitCode, checkDockerFile } from "@/api/api";
 import { Moon, Sun } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Outlet } from "react-router";
+import { useContext } from "react";
+import { UserProvider } from "@/context/userContext";
+
+const mainSubmit = () => {
+	const {id} = useParams();
+	const {user} = useContext(UserProvider);
+	const userToFunction = user?.email || 'supersen@gmail.com'
+	const code = '<h1>Hello World!</h1>'
+	submitCode(id, code, userToFunction);
+	submitProblem(userToFunction);
+}
 
 const ProblemDetails = ({ heading, difficulty, category, description }) => (
 	<div className="space-y-4 ">
@@ -21,6 +34,7 @@ const ProblemDetails = ({ heading, difficulty, category, description }) => (
 			</span>
 		</div>
 		<p className="text-gray-400 dark:text-gray-300">{description}</p>
+		<button className="rounded-full bg-[#18DF16] font-bold px-4 py-2 hover:opacity-75 transition duration-300" onClick={mainSubmit}>Submit</button>
 	</div>
 );
 

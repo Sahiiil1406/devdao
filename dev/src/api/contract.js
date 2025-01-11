@@ -3,7 +3,7 @@ import {a} from "../../public/a.js";
 const CONTRACT_ADDRESS = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
 
 const abi = a.abi;
-const submitProblem = async (name="jk",gitUrl) => {
+const submitProblem = async (name="supersen",gitUrl = 'https://github.com/sahil-mengji/open-commerce') => {
   try {
     let signer = null;
     let provider;
