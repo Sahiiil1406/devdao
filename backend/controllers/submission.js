@@ -28,7 +28,7 @@ const checkDockerFile = async (req, res) => {
     const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
     const question=await Question.findById(id)
     const text=`${question.title} and ${question.description}`
-    const prompt = `You have a dockerfile in code And problem is ${text}.Answer in one word yes or no.Dockefile is correct or not?`;
+    const prompt = `Our problem is ${text} and solution is ${code}.Answer in one word yes or no.Solution is correct or not.If it 80% or above correct say yes else no?`;
     const response = await model.generateContent([prompt]);
     console.log(response.response.candidates[0].content.parts[0].text);
     if(response.response.candidates[0].content.parts[0].text === "yes"){
