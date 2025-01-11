@@ -21,18 +21,18 @@ const ImageComparison = () => {
       alert("Please upload the first image.");
       return;
     }
-  
+
     try {
       setLoading(true);
-      setResult(null); 
-  
+      setResult(null);
+
       const uploadedBlob = await fetch(uploadedImage).then((res) => res.blob());
       const secondBlob = await fetch(secondImage).then((res) => res.blob());
-  
+
       const formData = new FormData();
       formData.append("image1", uploadedBlob, "image1.jpg");
       formData.append("image2", secondBlob, "image2.jpg");
-  
+
       const response = await fetch(
         "https://www.wolframcloud.com/obj/codeninja0812/image-comparison-api",
         {
@@ -40,23 +40,24 @@ const ImageComparison = () => {
           body: formData,
         }
       );
-  
-      const rawResponse = await response.text(); 
+
+      const rawResponse = await response.text();
       console.log("Raw API Response:", rawResponse);
-  
+
       try {
-        const jsonResult = JSON.parse(rawResponse); 
+        const jsonResult = JSON.parse(rawResponse);
         console.log("Parsed JSON Result:", jsonResult);
 
         setResult(jsonResult);
-  
-        
       } catch (jsonError) {
-        console.warn("Response is not JSON. Handling as plain text:", rawResponse);
-  
+        console.warn(
+          "Response is not JSON. Handling as plain text:",
+          rawResponse
+        );
+
         // If response is numeric, treat it as the distance value
         if (!isNaN(rawResponse)) {
-          setResult(parseFloat(rawResponse)); 
+          setResult(parseFloat(rawResponse));
         } else {
           console.error("Unexpected response:", rawResponse);
           alert("Failed to interpret server response.");
@@ -69,29 +70,37 @@ const ImageComparison = () => {
       setLoading(false);
     }
   };
-  
 
   return (
-    <div className="text-black">
-      <h1 className="text-black">Image Comparison Tool</h1>
-
+    <div className="text-white mt-3 flex flex-col gap-y-3">
       {/* Upload and Preview */}
       <div>
-        <label>Upload an image:</label>
-        <input type="file" accept="image/*" onChange={handleFileUpload} />
+        <label className="font-bold pt-8 pb-8">Upload an image:</label>
+        <input
+          type="file"
+          accept="image/*"
+          onChange={handleFileUpload}
+          className="mt-3"
+        />
         {uploadedImage && (
           <img src={uploadedImage} alt="Uploaded" width="200" />
         )}
       </div>
 
       {/* Compare Button */}
-      <button onClick={compareImages} disabled={loading}>
-        {loading ? "Comparing..." : "Compare"}
-      </button>
+      <div>
+        <button
+          onClick={compareImages}
+          disabled={loading}
+          className="rounded-full bg-green-500 px-4 py-2 font-bold"
+        >
+          {loading ? "Comparing..." : "Compare"}
+        </button>
+      </div>
 
       {/* Result */}
       {result !== null && (
-        <div>
+        <div className="flex flex-col font-semibold">
           <h2>Comparison Result</h2>
           {typeof result === "number" ? (
             <>
@@ -105,7 +114,7 @@ const ImageComparison = () => {
               )}
             </>
           ) : (
-            <p>{result}</p> 
+            <p>{result}</p>
           )}
         </div>
       )}
