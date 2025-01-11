@@ -9,7 +9,7 @@ import { a } from '../../../public/a';
 import { useNavigate } from 'react-router-dom';
 import {useContext} from 'react';
 import {UserContext} from '../../context/userContext';
-import {submitQuestion, getTokenCounter} from '../../lib/contract';
+import {submitQuestion, getTokenCounter} from '../../api/contract';
 
 const Caddress="0x5FbDB2315678afecb367f032d93F642f64180aa3"
 function Auth() {
