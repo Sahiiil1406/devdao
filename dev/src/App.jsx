@@ -27,7 +27,7 @@ export default function App() {
     <>
       <Navbar />
 
-      <div className="bg-black overflow-y-hidden w-full max-h-screen h-screen">
+      <div className="bg-black overflow-y-hidden w-full  min-h-screen">
         <Spotlight
           className="-top-40 left-0 md:left-60 md:-top-20"
           fill="white"
@@ -39,14 +39,14 @@ export default function App() {
             <Route path="/auth" element={<Auth />} />
             <Route path="/test" element={<Test />} />
             <Route path="/problem" element={<ProblemLayout />}>
-              <Route path="/all" element={<ProblemsList />} />
+              {/* <Route path="/all" element={<ProblemsList />} /> */}
               <Route path="react/:id" element={<Test />} />
               <Route path="css/:id" element={<CssChallenges />} />
               <Route path="system/:id" element={<SystemDesign />} />
             </Route>
-            <Route path="/problems" element={<ProblemsList />} />
-            <Route path="/testing" element={<Card />} />
 
+            <Route path="/testing" element={<Card />} />
+            <Route path="/problems" element={<ProblemsList />} />
           </Routes>
         </UserProvider>
       </div>

@@ -87,7 +87,7 @@ const ProblemCard = ({
   return (
     <Card
       onClick={() => {
-        navigate(category + "/" + id);
+        navigate(`${category}/${id}`);
       }}
       className={`p-6 transition-all duration-300 border-1 h-[200px] ${getDifficultyColor(
         difficulty
