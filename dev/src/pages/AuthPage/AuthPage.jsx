@@ -1,177 +1,107 @@
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
-import { useState } from "react";
+import React, { useState, useEffect } from 'react';
+import { Search, ShoppingCart, Phone } from 'lucide-react';
+import { Web3Auth } from "@web3auth/modal";
+import { CHAIN_NAMESPACES, WEB3AUTH_NETWORK } from "@web3auth/base";
+import { EthereumPrivateKeyProvider } from "@web3auth/ethereum-provider";
+const clientId = "BGgY-GW2jbtGpYSQYTirjT_6AcG5ihr6utEURPY0tIITv84tl7lIOTPEBnkJRgu_slOL7Ah0lnI23u-YWBNbRFM";
+import { ethers } from "ethers";
+import { a } from '../../../public/a';
+import { useNavigate } from 'react-router-dom';
+import {useContext} from 'react';
+import {UserContext} from '../../context/userContext';
 
-import { Button } from "@/components/ui/button";
-import {
-	Form,
-	FormControl,
-	FormField,
-	FormItem,
-	FormLabel,
-	FormMessage,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
+const Caddress="0x5FbDB2315678afecb367f032d93F642f64180aa3"
+function Auth() {
+  const [web3auth, setWeb3auth] = useState(null);
+  const [loggedIn, setLoggedIn] = useState(false);
+  const {user,loginUser,logoutUser}=useContext(UserContext);
+  const navigate=useNavigate();
 
-// Zod validation schema for login
-const loginSchema = z.object({
-	email: z.string().email({ message: "Invalid email address." }),
-	password: z
-		.string()
-		.min(6, { message: "Password must be at least 6 characters." }),
-});
+  useEffect(() => {
+    const init = async () => {
+      try {
+        const  chainConfig= {
+          chainNamespace: CHAIN_NAMESPACES.EIP155,
+          chainId: "0xaa36a7", // hex of 11155111, Sepolia testnet //"0x7A69" for hardhat
+          rpcTarget: "https://rpc.ankr.com/eth_sepolia",// "http://localhost:8545" Default Hardhat JSON-RPC server
+          displayName: "Ethereum Sepolia Testnet",
+          blockExplorer: "https://sepolia.etherscan.io",//empty for hardhat
+          ticker: "ETH",
+          tickerName: "Ethereum",
+        }
+        const privateKeyProvider = new EthereumPrivateKeyProvider({
+          config: { chainConfig },
+        });
+        const web3auth = new Web3Auth({
+          clientId,
+          chainConfig:chainConfig,
+          web3AuthNetwork: WEB3AUTH_NETWORK.SAPPHIRE_DEVNET,
+          privateKeyProvider
+          
+        });
 
-// Zod validation schema for register
-const registerSchema = z.object({
-	username: z
-		.string()
-		.min(2, { message: "Username must be at least 2 characters." }),
-	email: z.string().email({ message: "Invalid email address." }),
-	password: z
-		.string()
-		.min(6, { message: "Password must be at least 6 characters." }),
-});
+        setWeb3auth(web3auth);
+        await web3auth.initModal();
+        console.log("Web3Auth initialized");
+      } catch (error) {
+        console.error("Error initializing Web3Auth:", error);
+      }
+    };
 
-export default function AuthPage() {
-	// State to manage tabs
-	const [tab, setTab] = useState("login");
+    init();
+  }, []);
 
-	// Hook for login form
-	const loginForm = useForm({
-		resolver: zodResolver(loginSchema),
-	});
+ const goTodashboard=()=>{
+    navigate('/dashboard');
+  }
+  const login = async () => {
+    if (!web3auth) {
+      console.log("web3auth not initialized yet");
+      return;
+    }
+    try {
+      const web3authProvider = await web3auth.connect();
+      setLoggedIn(true);
+      console.log("Logged in with Web3Auth", web3authProvider);
+      await loginUser(await web3auth.getUserInfo())
+      goTodashboard()
+      
+    } catch (error) {
+      console.error("Error logging in with Web3Auth:", error);
+    }
+  };
 
-	// Hook for register form
-	const registerForm = useForm({
-		resolver: zodResolver(registerSchema),
-	});
+  const logout = async () => {
+    if (!web3auth) {
+      console.log("web3auth not initialized yet");
+      return;
+    }
+    try {
+      await web3auth.logout();
+      setLoggedIn(false);
+      logoutUser();
+      console.log("Logged out from Web3Auth");
+    } catch (error) {
+      console.error("Error logging out from Web3Auth:", error);
+    }
+  };
 
-	// Handle login form submission
-	const handleLoginSubmit = (data) => {
-		console.log(data);
-	};
+  const getUserInfo = async () => {
+    if (!web3auth) {
+      console.log("web3auth not initialized yet");
+      return;
+    }
+    // const user = await web3auth.getUserInfo();
+    // console.log("User info:", user);
+    console.log("User inklckfo:", user?.email);
+  };
 
-	// Handle register form submission
-	const handleRegisterSubmit = (data) => {
-		console.log(data);
-	};
-
-	return (
-		<div className="w-full h-[100vh] flex ">
-			<div className=" flex-1 p-8 ">
-				<img
-					className="w-full h-full rounded-[100px]"
-					src="https://www.freemockupworld.com/wp-content/uploads/2023/12/Stylish-iPhone-15-Free-Mockup-01.jpg"
-					alt=""
-				/>{" "}
-			</div>
-			<div className="max-w-[600px] w-full  flex items-center justify-center">
-				<Tabs defaultValue="login" onValueChange={(value) => setTab(value)}>
-					<TabsList>
-						<TabsTrigger value="login">Login</TabsTrigger>
-						<TabsTrigger value="register">Register</TabsTrigger>
-					</TabsList>
-
-					{/* Login Form */}
-					<TabsContent value="login">
-						<Form {...loginForm}>
-							<form
-								onSubmit={loginForm.handleSubmit(handleLoginSubmit)}
-								className="space-y-6"
-							>
-								<FormField
-									control={loginForm.control}
-									name="email"
-									render={({ field }) => (
-										<FormItem>
-											<FormLabel>Email</FormLabel>
-											<FormControl>
-												<Input placeholder="you@example.com" {...field} />
-											</FormControl>
-											<FormMessage />
-										</FormItem>
-									)}
-								/>
-								<FormField
-									control={loginForm.control}
-									name="password"
-									render={({ field }) => (
-										<FormItem>
-											<FormLabel>Password</FormLabel>
-											<FormControl>
-												<Input
-													type="password"
-													placeholder="******"
-													{...field}
-												/>
-											</FormControl>
-											<FormMessage />
-										</FormItem>
-									)}
-								/>
-								<Button type="submit">Login</Button>
-							</form>
-						</Form>
-					</TabsContent>
-
-					{/* Register Form */}
-					<TabsContent value="register">
-						<Form {...registerForm}>
-							<form
-								onSubmit={registerForm.handleSubmit(handleRegisterSubmit)}
-								className="space-y-6"
-							>
-								<FormField
-									control={registerForm.control}
-									name="username"
-									render={({ field }) => (
-										<FormItem>
-											<FormLabel>Username</FormLabel>
-											<FormControl>
-												<Input placeholder="yourusername" {...field} />
-											</FormControl>
-											<FormMessage />
-										</FormItem>
-									)}
-								/>
-								<FormField
-									control={registerForm.control}
-									name="email"
-									render={({ field }) => (
-										<FormItem>
-											<FormLabel>Email</FormLabel>
-											<FormControl>
-												<Input placeholder="you@example.com" {...field} />
-											</FormControl>
-											<FormMessage />
-										</FormItem>
-									)}
-								/>
-								<FormField
-									control={registerForm.control}
-									name="password"
-									render={({ field }) => (
-										<FormItem>
-											<FormLabel>Password</FormLabel>
-											<FormControl>
-												<Input
-													type="password"
-													placeholder="******"
-													{...field}
-												/>
-											</FormControl>
-											<FormMessage />
-										</FormItem>
-									)}
-								/>
-								<Button type="submit">Register</Button>
-							</form>
-						</Form>
-					</TabsContent>
-				</Tabs>
-			</div>
-		</div>
-	);
+  return (
+    <div className="bg-gray-100 min-h-screen">
+   <button onClick={login} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Login</button>
+   <button onClick={logout} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Logout</button>
+  </div>
+  );
 }
+
+export default Auth;
