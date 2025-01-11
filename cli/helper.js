@@ -1,10 +1,10 @@
 const axios = require('axios');
 const cloneRepo = async (id) => {
     try {
-        const res= await axios.get(`https://api.github.com/repositories/${id}`);
-        const {clone_url} = res.data;
+        const res= await axios.get(`http://localhost:3000/api/question/${id}`);
+        const {gitUrl} = res.data;
         console.log('Cloning repo...');
-        await execShellCommand(`git clone ${clone_url}`);
+        await execShellCommand(`git clone ${gitUrl}`);
         console.log('Repo cloned successfully!');
     } catch (error) {
         console.log(error);
