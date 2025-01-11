@@ -8,16 +8,17 @@ DevDao is an innovative platform inspired by LeetCode, designed for developers t
    - Live preview of React code as you write.
    - Real-time test validation to check code correctness.
 
-### 2. **Earn NFTs for Progress**
-   - Users can mint unique NFTs as proof of skill whenever they successfully solve a problem or complete a challenge.
+### 2. **System Design Practice**
+   - Drag-and-drop tools for designing high-level architectures (HLD).
+   - Solve real-world system design problems and get instant feedback.
 
 ### 3. **DevOps and CI/CD Practice**
    - Hands-on practice for writing **Dockerfiles** and setting up **CI/CD pipelines**.
    - Real-world DevOps scenarios to prepare users for industry challenges.
 
-### 4. **System Design Practice**
-   - Drag-and-drop tools for designing high-level architectures (HLD).
-   - Solve real-world system design problems and get instant feedback.
+### 4. **Earn NFTs for Progress**
+   - Users can mint unique NFTs as proof of skill whenever they successfully solve a problem or complete a challenge.
+
 
 ### 5. **Decentralized Storage and Blockchain Integration**
    - Uses **Pinata** for decentralized storage.
