@@ -12,13 +12,15 @@ DevDao is an innovative platform inspired by LeetCode, designed for developers t
    - Drag-and-drop tools for designing high-level architectures (HLD).
    - Solve real-world system design problems and get instant feedback.
 
-### 3. **DevOps and CI/CD Practice**
+### 3. **Earn NFTs for Progress**
+   - Users can mint unique NFTs as proof of skill whenever they successfully solve a problem or complete a challenge.
+   - **Plagiarism Detection:** 
+     - Each solution is assigned a **Content Identifier (CID)**. If the CID already exists in the storage, it means that the content has been submitted before.
+     - If plagiarism is detected, the minting of NFTs will be blocked, ensuring fairness and originality in submissions.
+     
+### 4. **DevOps and CI/CD Practice**
    - Hands-on practice for writing **Dockerfiles** and setting up **CI/CD pipelines**.
    - Real-world DevOps scenarios to prepare users for industry challenges.
-
-### 4. **Earn NFTs for Progress**
-   - Users can mint unique NFTs as proof of skill whenever they successfully solve a problem or complete a challenge.
-
 
 ### 5. **Decentralized Storage and Blockchain Integration**
    - Uses **Pinata** for decentralized storage.
