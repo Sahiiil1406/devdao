@@ -83,7 +83,7 @@ const CssChallengesEditor = ({ initialFiles }) => {
 								/>
 							</ResizablePanel>
 							<ResizableHandle className="bg-slate-700" />
-							<ResizablePanel defaultSize={50} minSize={20}>
+							<ResizablePanel defaultSize={15} minSize={20}>
 								<SandpackFileExplorer className="h-full" />
 							</ResizablePanel>
 						</ResizablePanelGroup>

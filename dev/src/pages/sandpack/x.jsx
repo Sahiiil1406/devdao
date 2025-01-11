@@ -51,11 +51,11 @@ const CodeEditorWithTests = ({ initialFiles, dependencies }) => {
 				>
 					<ResizablePanel defaultSize={60} minSize={20} className="">
 						<ResizablePanelGroup direction="horizontal">
-							<ResizablePanel defaultSize={50} minSize={20} className="">
+							<ResizablePanel defaultSize={20} minSize={20} className="">
 								<SandpackFileExplorer className="h-full" />
 							</ResizablePanel>
 							<ResizableHandle className="bg-slate-700" />
-							<ResizablePanel defaultSize={50} minSize={20} className="">
+							<ResizablePanel defaultSize={80} minSize={20} className="">
 								<SandpackCodeEditor
 									className="h-full"
 									extensions={[autocompletion()]}
@@ -66,7 +66,7 @@ const CodeEditorWithTests = ({ initialFiles, dependencies }) => {
 					</ResizablePanel>
 					<ResizableHandle className="bg-slate-700" />
 					{/* Bottom section with Preview and Tests */}
-					<ResizablePanel defaultSize={40} minSize={0} className="">
+					<ResizablePanel defaultSize={50} minSize={0} className="">
 						<ResizablePanelGroup direction="horizontal">
 							<ResizablePanel defaultSize={50} minSize={0} className="">
 								<SandpackTests className="h-full" />
