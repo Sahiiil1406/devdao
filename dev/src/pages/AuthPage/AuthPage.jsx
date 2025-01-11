@@ -9,6 +9,7 @@ import { a } from '../../../public/a';
 import { useNavigate } from 'react-router-dom';
 import {useContext} from 'react';
 import {UserContext} from '../../context/userContext';
+import {submitQuestion, getTokenCounter} from '../../lib/contract';
 
 const Caddress="0x5FbDB2315678afecb367f032d93F642f64180aa3"
 function Auth() {
@@ -100,6 +101,16 @@ function Auth() {
     <div className="bg-gray-100 min-h-screen">
    <button onClick={login} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Login</button>
    <button onClick={logout} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Logout</button>
+    <button onClick={getUserInfo} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Get User Info</button>
+    <button onClick={getTokenCounter} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Get counter</button>
+    <button 
+       onClick={() => submitQuestion('What is Aptos?', 'https://github.com/aptos-labs/aptos-core')} 
+       className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+    >
+  Submit
+</button>
+
+
   </div>
   );
 }
