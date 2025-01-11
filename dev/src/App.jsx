@@ -6,6 +6,10 @@ import Sand from './pages/sandpack/sand'
 import Test from './pages/sandpack/test'
 import Auth from './pages/AuthPage/AuthPage'
 
+import ProblemLayout from "./pages/ProblemLayout/ProblemLayout";
+import Navbar from "./components/Loader/Navbar";
+import CssChallenges from "./pages/sandpack/CssChallenges/CssChallengesEditor";
+
 export default function App() {
 	// const [isLoadingComplete, setIsLoadingComplete] = useState(false);
 	// const location = useLocation();
@@ -17,11 +21,10 @@ export default function App() {
 
 	return (
 		<>
-			{/* <StartLoader onComplete={handleLoaderComplete} />
-			{isLoadingComplete && ( */}
+			
 
-			{/* <Navbar /> */}
-			{/* <Suspense fallback={<Loader />}> */}
+			 <Navbar /> 
+			
 			<div className="bg-black overflow-y-hidden w-full max-h-screen h-screen">
 			<UserProvider>
 				<Routes>
@@ -35,8 +38,8 @@ export default function App() {
 		
 			</Routes>
 			</UserProvider>
-			</
-			{/* </Suspense> */}
+			</div>
+			
 		</>
 	);
 }
