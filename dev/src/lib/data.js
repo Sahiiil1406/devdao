@@ -1,10 +1,10 @@
 export const problems = [
     {
       "id": 1,
-      "title": "Responsive Navbar",
-      "description": "Design a responsive navigation bar that adapts to various screen sizes using only CSS.",
-      "difficulty": "Medium",
-      "category": "css",
+      "title": "Red Navbar with title DevDAO and API call",
+      "description": "Design a red navigation bar that has mentioned DevDAO.Make an api call on url https://jsonplaceholder.typicode.com/todos/1 and display the title of the todo item.",
+      "difficulty": "Hard",
+      "category": "react",
       "solved": false
     },
     {
