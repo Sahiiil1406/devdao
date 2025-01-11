@@ -9,11 +9,11 @@ import {
   Terminal,
   Palette,
 } from "lucide-react";
-import { useNavigate } from "react-router";
+import { redirect, useNavigate } from "react-router";
 
 const ProblemCard = ({
   id = "1",
-  title = "Two Sum",
+  title = "Hello World",
   description = "Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.",
   difficulty = "medium",
   category = "react",
@@ -87,7 +87,7 @@ const ProblemCard = ({
   return (
     <Card
       onClick={() => {
-        navigate(`${category}/${id}`);
+        navigate(`../problem/${category}/${id}`);
       }}
       className={`p-6 transition-all duration-300 border-1 h-[200px] ${getDifficultyColor(
         difficulty

@@ -10,29 +10,29 @@ export default function ProblemsGrid() {
 	const [selectedDifficulty, setSelectedDifficulty] = useState("all");
 	const [selectedCategory, setSelectedCategory] = useState("all");
 
-	const difficulties = ["all", "easy", "medium", "hard"];
-	const categories = [
-		"all",
-		"Component Design",
-		"System Design",
-		"DevOps",
-		"CSS Challenge",
-	];
+  const difficulties = ["all", "easy", "medium", "hard"];
+  const categories = [
+    "all",
+    "react",
+    "systems",
+    "devops",
+    "css",
+  ];
 
-	const filteredProblems = useMemo(() => {
-		return problems.filter((problem) => {
-			const matchesSearch = problem.title
-				.toLowerCase()
-				.includes(searchQuery.toLowerCase());
-			const matchesDifficulty =
-				selectedDifficulty === "all" ||
-				problem.difficulty.toLowerCase() === selectedDifficulty;
-			const matchesCategory =
-				selectedCategory === "all" ||
-				problem.category.toLowerCase() === selectedCategory.toLowerCase();
-			return matchesSearch && matchesDifficulty && matchesCategory;
-		});
-	}, [searchQuery, selectedDifficulty, selectedCategory]);
+  const filteredProblems = useMemo(() => {
+    return problems.filter((problem) => {
+      const matchesSearch = problem.title
+        .toLowerCase()
+        .includes(searchQuery.toLowerCase());
+      const matchesDifficulty =
+        selectedDifficulty === "all" ||
+        problem.difficulty.toLowerCase() === selectedDifficulty.toLowerCase();
+      const matchesCategory =
+        selectedCategory === "all" ||
+        problem.category.toLowerCase() === selectedCategory.toLowerCase();
+      return matchesSearch && matchesDifficulty && matchesCategory;
+    });
+  }, [searchQuery, selectedDifficulty, selectedCategory]);
 
 	const getDifficultyColor = (difficulty) => {
 		switch (difficulty) {

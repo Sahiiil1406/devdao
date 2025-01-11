@@ -39,9 +39,6 @@ const CodeEditorWithTests = ({ initialFiles, dependencies }) => {
 			files={files}
 			customSetup={{ dependencies }}
 			theme="dark"
-			options={{
-				layout: "console", // preview | tests | console
-			}}
 		>
 			<SandpackLayout className=" h-[90vh] rounde-xl overflow-hidden ">
 				{/* Top section with File Explorer and Code Editor */}

@@ -34,6 +34,7 @@ export default function App() {
 					};
 				}
 			}
+		console.log("FETCHING FILES FROM GITHUB...");
 			console.log(fetchedFiles["/App.jsx"]);
 			setStartFile(fetchedFiles["/App.jsx"]);
 

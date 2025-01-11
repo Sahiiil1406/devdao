@@ -40,7 +40,7 @@ export default function Navbar() {
           CSS
         </Link>
         <Link
-          to="/problem/system/1"
+          to="/problem/systems/1"
           className="hover:text-gray-300 flex items-center gap-2"
         >
           <Cpu size={20} className="text-gray-400" />
