@@ -15,7 +15,7 @@ export default function Navbar() {
 		<nav className="bg-none text-white p-4 flex items-center justify-between">
 			{/* Main Name/Brand */}
 			<Link to="/" className="text-xl font-bold  flex gap-2 items-center">
-				<img src="logo.png" className="h-[40px] ml-4" alt="DevDao" />
+				<img src="/logo.png" className="h-[40px] ml-4" alt="DevDao" />
 				<div className="bg-gray-200/20 h-[30px] w-[1px]"></div>
 
 				<p className="font-[200] text-sm  italic text-gray-200/60 ">
