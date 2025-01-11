@@ -5,7 +5,7 @@ import { UserProvider } from "./context/userContext";
 import Sand from "./pages/sandpack/sand";
 import Test from "./pages/sandpack/test";
 import Auth from "./pages/AuthPage/AuthPage";
-import LoginPage from "./pages/AuthPage/LoginPage"; 
+import LoginPage from "./pages/AuthPage/LoginPage";
 import ProblemLayout from "./pages/ProblemLayout/ProblemLayout";
 import Navbar from "./components/Loader/Navbar";
 import CssChallenges from "./pages/sandpack/CssChallenges/CssChallengesEditor";
@@ -13,43 +13,46 @@ import { Card } from "./components/Card/Card";
 import ProblemsList from "./pages/ProblemsList/ProblemsList";
 import { Spotlight } from "./components/ui/spotlight";
 import SystemDesign from "./pages/SystemDesign/SystemDesign";
+import DevOps from "./pages/DevOps/DevOps";
 
 export default function App() {
-  // const [isLoadingComplete, setIsLoadingComplete] = useState(false);
-  // const location = useLocation();
+	// const [isLoadingComplete, setIsLoadingComplete] = useState(false);
+	// const location = useLocation();
 
-  // // This function will be called when the StartLoader is done loading
-  // const handleLoaderComplete = () => {
-  // 	setIsLoadingComplete(true);
-  // };
+	// // This function will be called when the StartLoader is done loading
+	// const handleLoaderComplete = () => {
+	// 	setIsLoadingComplete(true);
+	// };
 
-  return (
-    <>
-      <Navbar />
+	return (
+		<>
+			<Navbar />
 
-      <div className="bg-black overflow-y-hidden w-full  min-h-screen">
-        <Spotlight
-          className="-top-40 left-0 md:left-60 md:-top-20"
-          fill="white"
-        />
+			<div className="bg-black overflow-y-hidden w-full  min-h-screen">
+				<Spotlight
+					className="-top-40 left-0 md:left-60 md:-top-20"
+					fill="white"
+				/>
 
-        <UserProvider>
-          <Routes>
-            <Route path="/sand" element={<Sand />} />
-            <Route path="/auth" element={<Auth />} />
-            <Route path="/test" element={<Test />} />
-            <Route path="/problem" element={<ProblemLayout />}>
-              {/* <Route path="/all" element={<ProblemsList />} /> */}
-              <Route path="react/:id" element={<Test />} />
-              <Route path="css/:id" element={<CssChallenges />} />
-              <Route path="system/:id" element={<SystemDesign />} />
-            </Route>
+				<UserProvider>
+					<Routes>
+						<Route path="/" />
+						<Route path="/sand" element={<Sand />} />
+						<Route path="/auth" element={<Auth />} />
+						<Route path="/test" element={<Test />} />
+						<Route path="/problem" element={<ProblemLayout />}>
+							{/* <Route path="/all" element={<ProblemsList />} /> */}
+							<Route path="react/:id" element={<Test />} />
+							<Route path="css/:id" element={<CssChallenges />} />
+							<Route path="system/:id" element={<SystemDesign />} />
+							<Route path="devops/:id" element={<DevOps />} />
+						</Route>
 
-            <Route path="/testing" element={<Card />} />
-            <Route path="/problems" element={<ProblemsList />} />
-          </Routes>
-        </UserProvider>
-      </div>
-    </>
-  );
+						<Route path="/testing" element={<LoginPage />} />
+						<Route path="/problems" element={<ProblemsList />} />
+					</Routes>
+				</UserProvider>
+			</div>
+		</>
+	);
 }
