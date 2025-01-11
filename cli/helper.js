@@ -1,0 +1,42 @@
+const axios = require('axios');
+const cloneRepo = async (id) => {
+    try {
+        const res= await axios.get(`https://api.github.com/repositories/${id}`);
+        const {clone_url} = res.data;
+        console.log('Cloning repo...');
+        await execShellCommand(`git clone ${clone_url}`);
+        console.log('Repo cloned successfully!');
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+const execShellCommand = async (cmd) => {
+    const exec = require('child_process').exec;
+    return new Promise((resolve, reject) => {
+        exec(cmd, (error, stdout, stderr) => {
+            if (error) {
+                console.warn(error);
+            }
+            resolve(stdout? stdout : stderr);
+        });
+    });
+}
+
+const submitProblem=async(id)=>{
+    try {
+        console.log('Submitting problem...');
+        console.log("Running tests...");
+        await execShellCommand(`npm test`);
+        console.log('Tests passed!');
+        console.log('Submitting problem...');
+        
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+module.exports = {
+    cloneRepo,
+    submitProblem
+}
