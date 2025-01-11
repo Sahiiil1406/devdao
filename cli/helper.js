@@ -30,6 +30,9 @@ const submitProblem=async(id)=>{
         await execShellCommand(`npm test`);
         console.log('Tests passed!');
         console.log('Submitting problem...');
+        const res= await axios.post(`http://localhost:5000/api/submit/${id}`);
+        console.log(res.data);
+        console.log('Problem submitted successfully!');
         
     } catch (error) {
         console.log(error);

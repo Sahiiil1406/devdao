@@ -57,6 +57,6 @@ module.exports = {
     getAllQuestions,
     getQuestion,
     submitCode,
-    checkDjsonFile,
+    checkDockerFile,
     createQuestion
 }
