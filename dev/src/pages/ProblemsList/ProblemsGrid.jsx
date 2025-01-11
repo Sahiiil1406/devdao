@@ -3,48 +3,8 @@ import ProblemCard from "./ProblemCard";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Filter, Search } from "lucide-react";
+import { problems } from "@/lib/data";
 
-// Add 50 problems (example data for testing)
-const problems = [
-	{
-		title: "Two Sum",
-		description:
-			"Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.",
-		difficulty: "beginner",
-		category: "react",
-		solved: true,
-	},
-	{
-		title: "3Sum",
-		description:
-			"Given an integer array nums, return all the triplets [nums[i], nums[j], nums[k]] such that i != j, i != k, and j != k, and nums[i] + nums[j] + nums[k] == 0.",
-		difficulty: "medium",
-		category: "system design",
-		solved: false,
-	},
-	{
-		title: "Median of Two Sorted Arrays",
-		description:
-			"Given two sorted arrays nums1 and nums2 of size m and n respectively, return the median of the two sorted arrays.",
-		difficulty: "expert",
-		category: "devops",
-		solved: false,
-	},
-	// Add more problems as needed, up to 50
-	...Array(47)
-		.fill(null)
-		.map((_, idx) => ({
-			title: `Problem ${idx + 4}`,
-			description: `Problem description for problem ${idx + 4}.`,
-			difficulty: ["beginner", "easy", "medium", "hard", "expert"][
-				Math.floor(Math.random() * 5)
-			],
-			category: ["react", "system design", "devops", "css"][
-				Math.floor(Math.random() * 4)
-			],
-			solved: Math.random() > 0.5,
-		})),
-];
 
 export default function ProblemsGrid() {
 	const [searchQuery, setSearchQuery] = useState("");
