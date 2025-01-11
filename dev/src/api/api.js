@@ -1,5 +1,6 @@
 import axios from 'axios';
-const URL='http://localhost:3000/api';
+const URL='http://localhost:5000/api';
+import {handleSubmission} from '@/lib/pinata.js'
 
 
 export const getAllQuestions = async () => {
@@ -23,6 +24,8 @@ export const getQuestion = async (id) => {
 export const submitCode = async (id, code,user) => {
     try {
         const response = await axios.post(`${URL}/submit/${id}`, { code,user });
+        const upload=await handleSubmission(code);
+        console.log(upload);
         return response.data;
     } catch (error) {
         console.log('Error while calling submitCode API ', error);

@@ -13,13 +13,16 @@ import { Outlet } from "react-router";
 import { useContext } from "react";
 import { UserProvider } from "@/context/userContext";
 
-const mainSubmit = () => {
-	const {id} = useParams();
-	const {user} = useContext(UserProvider);
-	const userToFunction = user?.email || 'supersen@gmail.com'
+const mainSubmit = async() => {
+	// const {id} = useParams();
+	// const {user} = useContext(UserProvider);
+	// const userToFunction = user?.email || 'supersen@gmail.com'
+	const id = '1'
+	const userToFunction='supersen14'
 	const code = '<h1>Hello World!</h1>'
-	submitCode(id, code, userToFunction);
-	submitProblem(userToFunction);
+	const y=await submitCode('67829c4c6c711e636eafd730', code, userToFunction);
+	console.log(y);
+	await submitProblem(userToFunction);
 }
 
 const ProblemDetails = ({ heading, difficulty, category, description }) => (
