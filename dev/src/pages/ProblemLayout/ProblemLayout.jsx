@@ -12,6 +12,7 @@ import { Button } from "@/components/ui/button";
 import { Outlet } from "react-router";
 import { useContext } from "react";
 import { UserProvider } from "@/context/userContext";
+import { problems } from "@/lib/data";
 
 const mainSubmit = async () => {
   // const {id} = useParams();
@@ -53,16 +54,20 @@ const DummyContent = () => (
 );
 
 export default function ProblemLayout() {
+  const {id} = useParams();
+  const problemToBeShown = problems.find((problem) => (problem.id == id));
+  const {title, description, category, difficulty} = problemToBeShown
+  console.log('title:', title);
   return (
     <div className="h-[100vh] bg-black  text-white p-4 m-0 pt-0">
       <ResizablePanelGroup direction="horizontal" className="min-h-screen">
         <ResizablePanel defaultSize={20} minSize={20} className="box-border">
           <div className="flex p-6 bg-[#27272A] rounded-xl border border-[#3f3f46] mr-2 h-[90vh] ">
             <ProblemDetails
-              heading="Hello world"
-              difficulty="Easy"
-              category="React"
-              description="Simple Hello World "
+              heading = {title}
+              difficulty= {difficulty}
+              category= {category}
+              description= {description}
             />
           </div>
         </ResizablePanel>
