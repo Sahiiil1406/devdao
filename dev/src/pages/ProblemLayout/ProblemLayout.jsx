@@ -14,38 +14,40 @@ import { useContext } from "react";
 import { UserProvider } from "@/context/userContext";
 import { problems } from "@/lib/data";
 
-const mainSubmit = async () => {
+const mainSubmit = async (category) => {
   // const {id} = useParams();
   // const {user} = useContext(UserProvider);
   // const userToFunction = user?.email || 'supersen@gmail.com'
   const id = "1";
   const userToFunction = "supersen14";
   const code = "<h1>Hello World!</h1>";
-  const y = await submitCode("67829c4c6c711e636eafd730", code, userToFunction);
+  const y = category == 'devops' ? (await checkDockerFile('67829c4c6c711e636eafd730', code, userToFunction)) : await submitCode("67829c4c6c711e636eafd730", code, userToFunction);
   console.log(y);
   await submitProblem(userToFunction);
 };
 
-const ProblemDetails = ({ heading, difficulty, category, description }) => (
-  <div className="space-y-4 ">
-    <h1 className="text-2xl font-bold">{heading}</h1>
-    <div className="flex space-x-2">
-      <span className="px-2 py-1 text-sm font-semibold bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-100 rounded-full">
-        {difficulty}
-      </span>
-      <span className="px-2 py-1 text-sm font-semibold bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-100 rounded-full">
-        {category}
-      </span>
+const ProblemDetails = ({ heading, difficulty, category, description }) => {
+  return (
+    <div className="space-y-4 ">
+      <h1 className="text-2xl font-bold">{heading}</h1>
+      <div className="flex space-x-2">
+        <span className="px-2 py-1 text-sm font-semibold bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-100 rounded-full">
+          {difficulty}
+        </span>
+        <span className="px-2 py-1 text-sm font-semibold bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-100 rounded-full">
+          {category}
+        </span>
+      </div>
+      <p className="text-gray-400 dark:text-gray-300">{description}</p>
+      <button
+        className="rounded-full bg-[#18DF16] font-bold px-4 py-2 hover:opacity-75 transition duration-300"
+        onClick={() => (mainSubmit(category))}
+      >
+        Submit
+      </button>
     </div>
-    <p className="text-gray-400 dark:text-gray-300">{description}</p>
-    <button
-      className="rounded-full bg-[#18DF16] font-bold px-4 py-2 hover:opacity-75 transition duration-300"
-      onClick={mainSubmit}
-    >
-      Submit
-    </button>
-  </div>
-);
+  );
+};
 
 const DummyContent = () => (
   <div className="h-[90vh] bg-[#1e1e1e] rounded-xl border border-[#3f3f46]  ml-2 overflow-hidden">
@@ -54,20 +56,20 @@ const DummyContent = () => (
 );
 
 export default function ProblemLayout() {
-  const {id} = useParams();
-  const problemToBeShown = problems.find((problem) => (problem.id == id));
-  const {title, description, category, difficulty} = problemToBeShown
-  console.log('title:', title);
+  const { id } = useParams();
+  const problemToBeShown = problems.find((problem) => problem.id == id);
+  const { title, description, category, difficulty } = problemToBeShown;
+  console.log("title:", title);
   return (
     <div className="h-[100vh] bg-black  text-white p-4 m-0 pt-0">
       <ResizablePanelGroup direction="horizontal" className="min-h-screen">
         <ResizablePanel defaultSize={20} minSize={20} className="box-border">
           <div className="flex p-6 bg-[#27272A] rounded-xl border border-[#3f3f46] mr-2 h-[90vh] ">
             <ProblemDetails
-              heading = {title}
-              difficulty= {difficulty}
-              category= {category}
-              description= {description}
+              heading={title}
+              difficulty={difficulty}
+              category={category}
+              description={description}
             />
           </div>
         </ResizablePanel>
