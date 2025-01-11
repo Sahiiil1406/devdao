@@ -5,7 +5,7 @@ import { UserProvider } from "./context/userContext";
 import Sand from "./pages/sandpack/sand";
 import Test from "./pages/sandpack/test";
 import Auth from "./pages/AuthPage/AuthPage";
-
+import LoginPage from "./pages/AuthPage/LoginPage"; 
 import ProblemLayout from "./pages/ProblemLayout/ProblemLayout";
 import Navbar from "./components/Loader/Navbar";
 import CssChallenges from "./pages/sandpack/CssChallenges/CssChallengesEditor";
@@ -44,7 +44,7 @@ export default function App() {
 							<Route path="system" element={<SystemDesign />} />
 						</Route>
 						<Route path="/problems" element={<ProblemsList />} />
-						<Route path="/testing" element={<Card />} />
+						<Route path="/testing" element={<LoginPage />} />
 					</Routes>
 				</UserProvider>
 			</div>
