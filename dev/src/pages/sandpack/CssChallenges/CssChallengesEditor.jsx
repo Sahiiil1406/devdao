@@ -1,26 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import {
 	SandpackProvider,
 	SandpackLayout,
 	SandpackCodeEditor,
-	SandpackTests,
 	SandpackPreview,
-	SandpackConsole,
-	useSandpack,
 	SandpackFileExplorer,
-	Sandpack,
 } from "@codesandbox/sandpack-react";
-
 import { autocompletion, completionKeymap } from "@codemirror/autocomplete";
-import { amethyst, dracula } from "@codesandbox/sandpack-themes";
 import {
 	ResizableHandle,
 	ResizablePanel,
 	ResizablePanelGroup,
 } from "@/components/ui/resizable";
+import Compare from "@/components/compare";
+import html2canvas from "html2canvas";
 
 const CssChallengesEditor = ({ initialFiles }) => {
 	const [files, setFiles] = useState(initialFiles);
+	const previewRef = useRef(null);
+	const [capturedImage, setCapturedImage] = useState("");
 
 	const handleCodeChange = (newCode, filePath) => {
 		setFiles((prevFiles) => ({
@@ -31,19 +29,53 @@ const CssChallengesEditor = ({ initialFiles }) => {
 			},
 		}));
 	};
-	console.log(files);
+
+	const handleCapture = async () => {
+		if (previewRef.current) {
+			try {
+				const canvas = await html2canvas(previewRef.current, {
+					useCORS: true,
+					allowTaint: true,
+					backgroundColor: null,
+					logging: true,
+					scale: 2,
+					// Wait for all content to load
+					onclone: (clonedDoc) => {
+						return new Promise((resolve) => {
+							setTimeout(resolve, 1000);
+						});
+					},
+					// Improve rendering of nested elements
+					foreignObjectRendering: true,
+				});
+
+				const imgData = canvas.toDataURL("image/png");
+				setCapturedImage(imgData);
+			} catch (error) {
+				console.error("Error capturing image:", error);
+			}
+		}
+	};
+
+	const downloadImage = () => {
+		if (capturedImage) {
+			const link = document.createElement("a");
+			link.href = capturedImage;
+			link.download = "captured_preview.png";
+			link.click();
+		}
+	};
 
 	return (
 		<SandpackProvider template="vanilla" theme="dark">
-			<SandpackLayout className=" h-[90vh] rounde-xl overflow-hidden ">
-				{/* Top section with File Explorer and Code Editor */}
+			<SandpackLayout className="h-[90vh] rounded-xl overflow-hidden">
 				<ResizablePanelGroup
 					direction="horizontal"
 					className="h-[96vh] flex flex-col"
 				>
-					<ResizablePanel defaultSize={60} minSize={0} className="">
+					<ResizablePanel defaultSize={60} minSize={0}>
 						<ResizablePanelGroup direction="vertical">
-							<ResizablePanel defaultSize={50} minSize={20} className="">
+							<ResizablePanel defaultSize={50} minSize={20}>
 								<SandpackCodeEditor
 									className="h-full"
 									extensions={[autocompletion()]}
@@ -51,16 +83,48 @@ const CssChallengesEditor = ({ initialFiles }) => {
 								/>
 							</ResizablePanel>
 							<ResizableHandle className="bg-slate-700" />
-							<ResizablePanel defaultSize={50} minSize={20} className="">
+							<ResizablePanel defaultSize={50} minSize={20}>
 								<SandpackFileExplorer className="h-full" />
 							</ResizablePanel>
 						</ResizablePanelGroup>
 					</ResizablePanel>
 					<ResizableHandle className="bg-slate-700" />
-					{/* Bottom section with Preview and Tests */}
-					<ResizablePanel defaultSize={40} minSize={0} className="">
-						<div>
-							<SandpackPreview className="h-full" />
+					<ResizablePanel
+						defaultSize={40}
+						minSize={0}
+						className="flex flex-col justify-center items-center p-4"
+					>
+						<div className="w-full h-[300px] bg-white">
+							<Compare>
+								<div
+									className="h-full w-full relative"
+									ref={previewRef}
+									style={{ transform: "translateZ(0)" }}
+								>
+									<SandpackPreview className="h-full absolute inset-0" />
+								</div>
+								<img
+									src="/api/placeholder/400/300"
+									className="w-full h-full object-cover"
+									alt="Target"
+								/>
+							</Compare>
+						</div>
+						<div className="mt-8 space-x-4">
+							<button
+								onClick={handleCapture}
+								className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md transition-colors"
+							>
+								Capture Preview
+							</button>
+							{capturedImage && (
+								<button
+									onClick={downloadImage}
+									className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-md transition-colors"
+								>
+									Download Image
+								</button>
+							)}
 						</div>
 					</ResizablePanel>
 				</ResizablePanelGroup>
@@ -68,16 +132,5 @@ const CssChallengesEditor = ({ initialFiles }) => {
 		</SandpackProvider>
 	);
 };
-
-// const ManualTestRunner = () => {
-//   const { runTests } = useSandpack();
-
-//   return (
-//     <div>
-//       <button onClick={runTests}>Run Tests</button>
-//       <SandpackTests />
-//     </div>
-//   );
-// };
 
 export default CssChallengesEditor;
