@@ -4,7 +4,7 @@ export const problems = [
       "title": "Responsive Navbar",
       "description": "Design a responsive navigation bar that adapts to various screen sizes using only CSS.",
       "difficulty": "Medium",
-      "category": "CSS Challenge",
+      "category": "css",
       "solved": false
     },
     {
@@ -12,7 +12,7 @@ export const problems = [
       "title": "Dark Mode Toggle",
       "description": "Implement a dark mode toggle for a web application using React and CSS transitions.",
       "difficulty": "Easy",
-      "category": "Component Design",
+      "category": "react",
       "solved": false
     },
     {
@@ -20,7 +20,7 @@ export const problems = [
       "title": "Drag and Drop File Upload",
       "description": "Create a drag-and-drop file upload component with visual feedback for uploaded files.",
       "difficulty": "Medium",
-      "category": "Component Design",
+      "category": "react",
       "solved": false
     },
     {
@@ -28,7 +28,7 @@ export const problems = [
       "title": "Design a Login System",
       "description": "Design a scalable login system, including database schema, API endpoints, and security measures.",
       "difficulty": "Hard",
-      "category": "System Design",
+      "category": "systems",
       "solved": false
     },
     {
@@ -36,7 +36,7 @@ export const problems = [
       "title": "CSS Grid Layout Challenge",
       "description": "Recreate a complex website layout using CSS Grid.",
       "difficulty": "Medium",
-      "category": "CSS Challenge",
+      "category": "css",
       "solved": false
     },
     {
@@ -44,7 +44,7 @@ export const problems = [
       "title": "Build a Chat Component",
       "description": "Develop a real-time chat component using React and integrate it with a WebSocket API.",
       "difficulty": "Medium",
-      "category": "Component Design",
+      "category": "react",
       "solved": false
     },
     {
@@ -52,7 +52,7 @@ export const problems = [
       "title": "Create a Service Monitoring Dashboard",
       "description": "Design and implement a dashboard for monitoring microservices, showing metrics like uptime and errors.",
       "difficulty": "Hard",
-      "category": "DevOps",
+      "category": "devops",
       "solved": false
     },
     {
@@ -60,7 +60,7 @@ export const problems = [
       "title": "CSS Animation Loader",
       "description": "Create a visually appealing loader animation using only CSS.",
       "difficulty": "Easy",
-      "category": "CSS Challenge",
+      "category": "css",
       "solved": false
     },
     {
@@ -68,7 +68,7 @@ export const problems = [
       "title": "Build a Dropdown Menu",
       "description": "Implement a multi-level dropdown menu with smooth transitions using React and CSS.",
       "difficulty": "Medium",
-      "category": "Component Design",
+      "category": "react",
       "solved": false
     },
     {
@@ -76,7 +76,7 @@ export const problems = [
       "title": "Design a URL Shortener",
       "description": "Design the architecture for a URL shortener, including database schema, API, and scaling considerations.",
       "difficulty": "Hard",
-      "category": "System Design",
+      "category": "systems",
       "solved": false
     },
     {
@@ -84,7 +84,7 @@ export const problems = [
       "title": "Responsive Card Layout",
       "description": "Create a card layout that adjusts dynamically based on screen size using CSS Flexbox.",
       "difficulty": "Easy",
-      "category": "CSS Challenge",
+      "category": "css",
       "solved": false
     },
     {
@@ -92,7 +92,7 @@ export const problems = [
       "title": "Build a Modal Component",
       "description": "Design a reusable modal component with accessibility features in React.",
       "difficulty": "Medium",
-      "category": "Component Design",
+      "category": "react",
       "solved": false
     },
     {
@@ -100,7 +100,7 @@ export const problems = [
       "title": "Design a File Storage System",
       "description": "Design a system for storing and retrieving large files, ensuring redundancy and scalability.",
       "difficulty": "Hard",
-      "category": "System Design",
+      "category": "systems",
       "solved": false
     },
     {
@@ -108,7 +108,7 @@ export const problems = [
       "title": "Deploy a CI/CD Pipeline",
       "description": "Set up a CI/CD pipeline using tools like Jenkins, GitHub Actions, or GitLab CI.",
       "difficulty": "Medium",
-      "category": "DevOps",
+      "category": "devops",
       "solved": false
     },
     {
@@ -116,7 +116,7 @@ export const problems = [
       "title": "CSS Button Hover Effects",
       "description": "Create a set of buttons with different hover effects using pure CSS.",
       "difficulty": "Easy",
-      "category": "CSS Challenge",
+      "category": "css",
       "solved": false
     },
     {
@@ -124,7 +124,7 @@ export const problems = [
       "title": "Build a Tabs Component",
       "description": "Design a tabbed interface that supports dynamic content loading.",
       "difficulty": "Medium",
-      "category": "Component Design",
+      "category": "react",
       "solved": false
     },
     {
@@ -132,7 +132,7 @@ export const problems = [
       "title": "Design an E-commerce System",
       "description": "Design the architecture for an e-commerce platform, including catalog, cart, and payment systems.",
       "difficulty": "Hard",
-      "category": "System Design",
+      "category": "systems",
       "solved": false
     },
     {
@@ -140,7 +140,7 @@ export const problems = [
       "title": "Implement a Load Balancer",
       "description": "Design and implement a load balancer for distributing traffic across multiple servers.",
       "difficulty": "Hard",
-      "category": "DevOps",
+      "category": "devops",
       "solved": false
     },
     {
@@ -148,7 +148,7 @@ export const problems = [
       "title": "CSS Tooltip Challenge",
       "description": "Create a tooltip that appears on hover and adjusts its position based on available space.",
       "difficulty": "Medium",
-      "category": "CSS Challenge",
+      "category": "css",
       "solved": false
     },
     {
@@ -156,7 +156,7 @@ export const problems = [
       "title": "Build a Notification Component",
       "description": "Create a notification system that supports toast and in-app notifications.",
       "difficulty": "Medium",
-      "category": "Component Design",
+      "category": "react",
       "solved": false
     },
     {
@@ -164,7 +164,7 @@ export const problems = [
       "title": "Design a Social Media Feed",
       "description": "Design the backend system for a social media feed, considering scalability and real-time updates.",
       "difficulty": "Hard",
-      "category": "System Design",
+      "category": "systems",
       "solved": false
     },
     {
@@ -172,7 +172,7 @@ export const problems = [
       "title": "Monitor Server Health",
       "description": "Set up monitoring tools like Prometheus and Grafana to track server health and performance.",
       "difficulty": "Medium",
-      "category": "DevOps",
+      "category": "devops",
       "solved": false
     },
     {
@@ -180,7 +180,7 @@ export const problems = [
       "title": "CSS Image Gallery",
       "description": "Design a responsive image gallery with hover effects and animations using CSS.",
       "difficulty": "Medium",
-      "category": "CSS Challenge",
+      "category": "css",
       "solved": false
     },
     {
@@ -188,7 +188,7 @@ export const problems = [
       "title": "Build an Accordion Component",
       "description": "Create a collapsible accordion component with smooth animations in React.",
       "difficulty": "Easy",
-      "category": "Component Design",
+      "category": "react",
       "solved": false
     },
     {
@@ -196,7 +196,7 @@ export const problems = [
       "title": "Design a Video Streaming Service",
       "description": "Design the architecture for a video streaming service, focusing on storage, encoding, and CDN delivery.",
       "difficulty": "Hard",
-      "category": "System Design",
+      "category": "systems",
       "solved": false
     }
   ]

@@ -13,10 +13,10 @@ export default function ProblemsGrid() {
   const difficulties = ["all", "easy", "medium", "hard"];
   const categories = [
     "all",
-    "Component Design",
-    "System Design",
-    "DevOps",
-    "CSS Challenge",
+    "react",
+    "systems",
+    "devops",
+    "css",
   ];
 
   const filteredProblems = useMemo(() => {
@@ -26,7 +26,7 @@ export default function ProblemsGrid() {
         .includes(searchQuery.toLowerCase());
       const matchesDifficulty =
         selectedDifficulty === "all" ||
-        problem.difficulty.toLowerCase() === selectedDifficulty;
+        problem.difficulty.toLowerCase() === selectedDifficulty.toLowerCase();
       const matchesCategory =
         selectedCategory === "all" ||
         problem.category.toLowerCase() === selectedCategory.toLowerCase();

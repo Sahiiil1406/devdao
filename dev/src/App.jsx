@@ -42,7 +42,7 @@ export default function App() {
               {/* <Route path="/all" element={<ProblemsList />} /> */}
               <Route path="react/:id" element={<Test />} />
               <Route path="css/:id" element={<CssChallenges />} />
-              <Route path="system/:id" element={<SystemDesign />} />
+              <Route path="systems/:id" element={<SystemDesign />} />
             </Route>
 
             <Route path="/testing" element={<Card />} />
