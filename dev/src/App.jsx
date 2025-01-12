@@ -15,6 +15,7 @@ import { Spotlight } from "./components/ui/spotlight";
 import SystemDesign from "./pages/SystemDesign/SystemDesign";
 import DevOps from "./pages/DevOps/DevOps";
 import LandingPage from "./pages/LandingPage/LandingPage";
+import ProfileDashboard from "./pages/ProfilePage/Profile";
 
 export default function App() {
   // const [isLoadingComplete, setIsLoadingComplete] = useState(false);
@@ -51,6 +52,7 @@ export default function App() {
 
             <Route path="/testing" element={<LoginPage />} />
             <Route path="/problems" element={<ProblemsList />} />
+            <Route path="/profile" element={<ProfileDashboard />} />
           </Routes>
         </UserProvider>
       </div>

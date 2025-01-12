@@ -7,6 +7,7 @@ import {
   FileText,
   Cpu,
   GitBranch,
+  Network,
 } from "lucide-react"; // Import appropriate icons from Lucide React
 import { Link } from "react-router-dom";
 
@@ -24,7 +25,7 @@ export default function Navbar() {
         </p>
       </Link>
 
-      <div className="text-gray-500 space-x-6 font-semibold flex">
+      <div className="text-gray-500 space-x-6 font-semibold flex text-sm">
         <Link
           to="/problem/react/1"
           className="hover:text-gray-300 flex items-center gap-2"
@@ -33,18 +34,25 @@ export default function Navbar() {
           React
         </Link>
         <Link
-          to="/problem/css/1"
+          to="/problem/css/5"
           className="hover:text-gray-300 flex items-center gap-2"
         >
           <FileText size={20} className="text-gray-400" />
           CSS
         </Link>
         <Link
-          to="/problem/systems/1"
+          to="/problem/systems/10"
           className="hover:text-gray-300 flex items-center gap-2"
         >
           <Cpu size={20} className="text-gray-400" />
           System Design
+        </Link>
+        <Link
+          to="/problem/devops/7"
+          className="hover:text-gray-300 flex items-center gap-2"
+        >
+          <Network size={20} className="text-gray-400" />
+          DevOps
         </Link>
         <Link
           to="/problems"
@@ -57,25 +65,28 @@ export default function Navbar() {
 
       {/* Icons */}
       <div className="flex space-x-6">
-        <a href="/" className="hover:text-gray-300">
+        {/* <a href="/" className="hover:text-gray-300">
           <Home
             size={24}
             className="transition-all transform hover:scale-110"
           />
-        </a>
-        <Link to="/auth" className="hover:text-gray-300">
+        </a> */}
+        <Link
+          to="/profile"
+          className="hover:text-gray-300 mr-4 w-[160px] flex justify-end"
+        >
           <User
             size={24}
             className="transition-all transform hover:scale-110"
           />
         </Link>
         {/* Optional Settings icon */}
-        <Link to="/settings" className="hover:text-gray-300">
+        {/* <Link to="/settings" className="hover:text-gray-300">
           <Settings
             size={24}
             className="transition-all transform hover:scale-110"
           />
-        </Link>
+        </Link> */}
       </div>
     </nav>
   );

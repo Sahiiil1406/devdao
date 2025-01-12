@@ -49,9 +49,9 @@ export const problems = [
     },
     {
       "id": 7,
-      "title": "Create a Service Monitoring Dashboard",
-      "description": "Design and implement a dashboard for monitoring microservices, showing metrics like uptime and errors.",
-      "difficulty": "Hard",
+      "title": "Create and Deploy a Docker Container",
+      "description": "Create a Dockerfile to build a custom image for a simple Node.js application. Use the image to create and run a container, and expose the application on port 3000.",
+      "difficulty": "Medium",
       "category": "devops",
       "solved": false
     },
