@@ -1,20 +1,23 @@
 import DotPattern from "@/components/ui/dot-pattern";
 import { cn } from "@/lib/utils";
 import React from "react";
+import { OrbitingCirclesDemo } from "./Orbits";
+import { RainbowButton } from "@/components/ui/rainbow-button";
 
 export default function LandingPage() {
 	return (
 		<div className="w-full min-h-screen">
 			{" "}
-			<div className="flex px-8 pt-16 gap-4">
-				<div className=" flex-1  ">
+			<div className="flex px-8 pt-16 gap-12 h-[550px]">
+				<div className=" flex-1 flex items-center justify-center">
 					<DotPattern
 						className={cn(
 							"[mask-image:radial-gradient(300px_circle_at_center,white,transparent)]"
 						)}
 					/>
+					<OrbitingCirclesDemo />
 				</div>
-				<div className=" p-4 flex-1  mx-auto relative z-10  w-full pt-20 md:pt-0 ">
+				<div className=" p-4 flex-1  mx-auto relative z-10  w-full pt-32 md:pt-0 pb-0 ">
 					<DotPattern
 						className={cn(
 							"[mask-image:radial-gradient(300px_circle_at_center,white,transparent)]"
@@ -32,6 +35,9 @@ export default function LandingPage() {
 						section of the page. I don&apos;t know why but I&apos;m running out
 						of copy.
 					</p>
+					<RainbowButton className="mt-8 text-xl py-8 rounded-2xl">
+						<b>Login </b>, to Get Started
+					</RainbowButton>
 				</div>
 			</div>
 		</div>
