@@ -14,6 +14,7 @@ import ProblemsList from "./pages/ProblemsList/ProblemsList";
 import { Spotlight } from "./components/ui/spotlight";
 import SystemDesign from "./pages/SystemDesign/SystemDesign";
 import DevOps from "./pages/DevOps/DevOps";
+import LandingPage from "./pages/LandingPage/LandingPage";
 
 export default function App() {
 	// const [isLoadingComplete, setIsLoadingComplete] = useState(false);
@@ -36,7 +37,7 @@ export default function App() {
 
 				<UserProvider>
 					<Routes>
-						<Route path="/" />
+						<Route path="/" element={<LandingPage />} />
 						<Route path="/sand" element={<Sand />} />
 						<Route path="/auth" element={<Auth />} />
 						<Route path="/test" element={<Test />} />

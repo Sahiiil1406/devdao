@@ -116,6 +116,7 @@ DevDao is an innovative platform inspired by LeetCode, designed for developers t
 Special thanks to:
 - The Polygon team
 - Aptos Foundation
+- Avalanche
 
 ---
 
@@ -123,4 +124,11 @@ Built with ❤️ by the AlgoRythms Team
 
 ## DEPLOYED ON POLYGON
 ![image](https://github.com/user-attachments/assets/f9924350-5387-46da-aeb9-76e1727e1c93)
+
+## Avalanche local network setup
+![Screenshot 2025-01-12 055137](https://github.com/user-attachments/assets/c9b12f2a-c0eb-4259-978d-9e5fd828ea54)
+
+![image](https://github.com/user-attachments/assets/9f961ad2-3d5f-4366-a164-712db01b7f37)
+
+
 
