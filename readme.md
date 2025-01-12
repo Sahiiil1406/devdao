@@ -20,8 +20,6 @@ DevDao is an innovative platform inspired by LeetCode, designed for developers t
 - Containerized testing infrastructure
 - Automated test execution in isolated environments
 - Support for unit, integration, and API testing
-- Real-time test results and coverage reports
-- MongoDB integration for data persistence testing
 
 
 ### 4. NFT-Based Achievement System
