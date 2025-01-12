@@ -1,30 +1,7 @@
 import React from 'react';
 import CodeEditorWithTests from './x.jsx';
 //Wolfram--->maths(Image recogition)
-// const initialFiles = {
-//   'App.js': {
-//     code: `import React from 'react';
 
-//     function App() {
-//       return <h1>Hello, world!</h1>;
-//     }
-
-//     export default App;
-//     `,
-//   },
-//   'App.test.js': {
-//     code: `import { render, screen } from '@testing-library/react';
-//     import '@testing-library/jest-dom';
-//     import App from './App';
-
-//     test('renders hello world', () => {
-//       render(<App />);
-//       const linkElement = screen.getByText(/hello, world!/i);
-//       expect(linkElement).toBeInTheDocument();
-//     });
-//     `,
-//   },
-// };
 const initialFiles = {
   'App.js': {
     code: `import React, { useEffect, useState } from 'react';
@@ -132,7 +109,54 @@ const initialFiles = {
     `,
   },
 };
+const alt = {
+  'App.js': {
+    code: `import React, { useState } from 'react';
 
+    function App() {
+      const [buttonText, setButtonText] = useState('Devdao');
+
+      const handleClick = () => {
+        setButtonText(prevText => (prevText === 'Devdao' ? 'Hackvwese' : 'Devdao'));
+      };
+
+      return <button onClick={handleClick}>{buttonText}</button>;
+    }
+
+    export default App;
+    `,
+  },
+  'App.test.js': {
+    code: `import { render, screen, fireEvent } from '@testing-library/react';
+    import '@testing-library/jest-dom';
+    import App from './App';
+
+    test('toggles button text between Devdao and Hackvwese', () => {
+      render(<App />);
+      const buttonElement = screen.getByText('Devdao');
+
+      // Click once to change to Hackvwese
+      fireEvent.click(buttonElement);
+      expect(buttonElement.textContent).toBe('Hackvwese');
+
+      // Click again to change back to Devdao
+      fireEvent.click(buttonElement);
+      expect(buttonElement.textContent).toBe('Devdao');
+    });
+    `,
+  },
+};
+
+const returnInitailFiles = (initialFiles) => {
+  const x=Math.floor(Math.random() * 2);
+  if(x===0){
+    return initialFiles;
+  }
+  else{
+    return alt;
+  }
+};
+const file=returnInitailFiles(initialFiles);
 
 
 const dependencies = {
@@ -144,7 +168,7 @@ const dependencies = {
 };
 
 const Test = () => (
-  <CodeEditorWithTests initialFiles={initialFiles} dependencies={dependencies} />
+  <CodeEditorWithTests initialFiles={file} dependencies={dependencies} />
 );
 
 export default Test;
