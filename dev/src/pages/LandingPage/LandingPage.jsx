@@ -3,6 +3,9 @@ import { cn } from "@/lib/utils";
 import React from "react";
 import { OrbitingCirclesDemo } from "./Orbits";
 import { RainbowButton } from "@/components/ui/rainbow-button";
+import { HeroScrollDemo } from "./showcase";
+import { FeaturesSectionDemo } from "./Feature";
+// import { TextLoopCustomVariantsTransition } from "./featuresHeading";
 
 export default function LandingPage() {
 	return (
@@ -35,11 +38,14 @@ export default function LandingPage() {
 						section of the page. I don&apos;t know why but I&apos;m running out
 						of copy.
 					</p>
-					<RainbowButton className="mt-8 text-xl py-8 rounded-2xl">
+					<RainbowButton className="mt-8 text-xl py-8 rounded-2xl italic">
 						<b>Login </b>, to Get Started
 					</RainbowButton>
 				</div>
 			</div>
+			<HeroScrollDemo />
+			{/* <TextLoopCustomVariantsTransition /> */}
+			<FeaturesSectionDemo />
 		</div>
 	);
 }
