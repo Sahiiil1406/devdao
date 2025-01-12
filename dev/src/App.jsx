@@ -17,43 +17,43 @@ import DevOps from "./pages/DevOps/DevOps";
 import LandingPage from "./pages/LandingPage/LandingPage";
 
 export default function App() {
-	// const [isLoadingComplete, setIsLoadingComplete] = useState(false);
-	// const location = useLocation();
+  // const [isLoadingComplete, setIsLoadingComplete] = useState(false);
+  // const location = useLocation();
 
-	// // This function will be called when the StartLoader is done loading
-	// const handleLoaderComplete = () => {
-	// 	setIsLoadingComplete(true);
-	// };
+  // // This function will be called when the StartLoader is done loading
+  // const handleLoaderComplete = () => {
+  // 	setIsLoadingComplete(true);
+  // };
 
-	return (
-		<>
-			<Navbar />
+  return (
+    <>
+      <Navbar />
 
-			<div className="bg-black overflow-y-hidden w-full  min-h-screen">
-				<Spotlight
-					className="-top-40 left-0 md:left-60 md:-top-20"
-					fill="white"
-				/>
+      <div className="bg-black overflow-y-hidden w-full  min-h-screen">
+        <Spotlight
+          className="-top-40 left-0 md:left-60 md:-top-20"
+          fill="white"
+        />
 
-				<UserProvider>
-					<Routes>
-						<Route path="/" element={<LandingPage />} />
-						<Route path="/sand" element={<Sand />} />
-						<Route path="/auth" element={<Auth />} />
-						<Route path="/test" element={<Test />} />
-						<Route path="/problem" element={<ProblemLayout />}>
-							{/* <Route path="/all" element={<ProblemsList />} /> */}
-							<Route path="react/:id" element={<Test />} />
-							<Route path="css/:id" element={<CssChallenges />} />
-							<Route path="systems/:id" element={<SystemDesign />} />
-							<Route path="devops/:id" element={<DevOps />} />
-						</Route>
+        <UserProvider>
+          <Routes>
+            <Route path="/" element={<LandingPage />} />
+            <Route path="/sand" element={<Sand />} />
+            <Route path="/auth" element={<Auth />} />
+            <Route path="/test" element={<Test />} />
+            <Route path="/problem" element={<ProblemLayout />}>
+              {/* <Route path="/all" element={<ProblemsList />} /> */}
+              <Route path="react/:id" element={<Test />} />
+              <Route path="css/:id" element={<CssChallenges />} />
+              <Route path="systems/:id" element={<SystemDesign />} />
+              <Route path="devops/:id" element={<DevOps />} />
+            </Route>
 
-						<Route path="/testing" element={<LoginPage />} />
-						<Route path="/problems" element={<ProblemsList />} />
-					</Routes>
-				</UserProvider>
-			</div>
-		</>
-	);
+            <Route path="/testing" element={<LoginPage />} />
+            <Route path="/problems" element={<ProblemsList />} />
+          </Routes>
+        </UserProvider>
+      </div>
+    </>
+  );
 }
