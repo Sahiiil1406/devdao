@@ -1,6 +1,7 @@
 # DevDao 🚀
 ![Diagram 1](/screenshots/diagram-export-1-12-2025-10_27_01-AM.png)
 
+
 DevDao is an innovative platform inspired by LeetCode, designed for developers to practice and hone their skills in domains like **React machine coding**, **Dockerfile writing**, **CI/CD pipelines**, **system design**, and more. It combines interactive learning with blockchain technology to provide a unique and rewarding experience.
 
 ## 🌟 Features
@@ -145,4 +146,6 @@ The following screenshots demonstrate various aspects of the DevDao platform. Al
 ![Diagram 10](/screenshots/diagram-export-1-12-2025-10_27_49-AM.png)
 ![Diagram 11](/screenshots/diagram-export-1-12-2025-10_27_53-AM.png)
 ![Diagram 12](/screenshots/diagram-export-1-12-2025-10_28_01-AM.png)
+
+[![Watch the video](https://img.youtube.com/vi/kz5wMKzpI48/maxresdefault.jpg)](https://youtu.be/kz5wMKzpI48)
 
